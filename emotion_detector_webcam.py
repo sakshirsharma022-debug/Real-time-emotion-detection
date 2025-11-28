@@ -2,10 +2,10 @@ import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 
-# Load model (update path if needed)
+
 model = load_model(r"C:\Users\Harshit Sharma\OneDrive\Desktop\ML\Project 1\emotion_detection_model.keras")
 
-# Emotion class labels — adjust if your dataset used different labels
+
 emotion_labels = ['Angry','Disgust','Fear','Happy','Neutral','Sad','Surprise']
 
 # Initialize camera
@@ -33,7 +33,7 @@ while True:
         preds = model.predict(roi, verbose=0)[0]
         emotion = emotion_labels[np.argmax(preds)]
 
-        # Draw
+      
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
         cv2.putText(frame, emotion, (x, y-10),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
